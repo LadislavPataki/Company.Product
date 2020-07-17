@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{25D349B9-BC02-42FB-BA92-271A805B0819}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Product.UI", "Company.Product.UI\Company.Product.UI.csproj", "{86EBF104-B09B-439B-AB32-0C189B72CEC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.Product.UI", "Company.Product.UI\Company.Product.UI.csproj", "{86EBF104-B09B-439B-AB32-0C189B72CEC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GlobalAssemblyInfo", "GlobalAssemblyInfo", "{0804FBB2-FC5B-40C7-BF8D-8822BEB339C1}"
+	ProjectSection(SolutionItems) = preProject
+		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
