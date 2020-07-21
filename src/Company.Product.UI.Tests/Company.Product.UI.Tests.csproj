@@ -4,6 +4,18 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <!-- SonarQube needs this -->
+    <ProjectGuid>{4181F8D3-744E-407B-8B6B-EFDE17577016}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>../Output/Tests/Debug/Company.Product.UI.Tests</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>../Output/Tests/Release/Company.Product.UI.Tests</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
