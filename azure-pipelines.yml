@@ -10,11 +10,20 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'ladislavpataki'
+    scannerMode: 'MSBuild'
+    projectKey: 'ladislavpataki'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
 
 - task: DotNetCoreCLI@2
   inputs:
