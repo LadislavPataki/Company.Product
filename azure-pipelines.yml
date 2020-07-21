@@ -31,4 +31,7 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 
