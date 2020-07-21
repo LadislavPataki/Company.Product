@@ -9,6 +9,10 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <SignAssembly>false</SignAssembly>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+    <!-- SonarQube needs this -->
+    <ProjectGuid>{EB3F3FAE-6C61-4EB9-8642-F84B27E03F26}</ProjectGuid>
+
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
