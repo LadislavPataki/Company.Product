@@ -16,12 +16,15 @@ steps:
     organization: 'ladislavpataki'
     scannerMode: 'MSBuild'
     projectKey: 'CleanArch'
+    extraProperties: |
+      sonar.exclusions=**/*.bin
+      sonar.cs.dotcover.reportsPath=$(Common.TestResultsDirectory)'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) --logger:"trx;LogFileName=$(Common.TestResultsDirectory)" --collect:"Code Coverage" /p:CoverletOutputFormat=opencover'
 
 - task: SonarCloudAnalyze@1
 
@@ -34,4 +37,3 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
-
