@@ -24,7 +24,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --logger:"trx;LogFileName=$(Common.TestResultsDirectory)" --collect:"Code Coverage" /p:CoverletOutputFormat=opencover'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: SonarCloudAnalyze@1
 
@@ -32,7 +32,7 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) --logger:"trx;LogFileName=$(Common.TestResultsDirectory)" --collect:"Code Coverage" /p:CoverletOutputFormat=opencover'
 
 - task: SonarCloudPublish@1
   inputs:
