@@ -6,7 +6,7 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
+  buildPlatform: 'x86'
   buildConfiguration: 'Release'
 
 steps:
@@ -20,11 +20,12 @@ steps:
       sonar.exclusions=**/*.bin
       sonar.cs.dotcover.reportsPath=$(Common.TestResultsDirectory)'
 
-- task: DotNetCoreCLI@2
+- task: VSBuild@1
   inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    solution: '$(solution)'
+    msbuildArgs: '/restore'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: SonarCloudAnalyze@1
 
