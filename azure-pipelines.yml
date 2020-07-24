@@ -42,7 +42,8 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    Contents: '**/AppPackages/**'
+    SourceFolder: '$(Build.SourcesDirectory)/src/Company.Product.Package/AppPackages'
+    Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'    
 
 - task: PublishBuildArtifacts@1
