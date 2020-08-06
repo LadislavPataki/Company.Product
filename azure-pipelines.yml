@@ -9,8 +9,20 @@ variables:
   buildPlatform: 'x86'
   buildConfiguration: 'Release'
   appxPackageDir: 'AppPackages'
+  version.Major: '1'
+  version.Minor: '0'
+  version.Patch: '0' 
+  versionNumber: '$(version.Major).$(version.Minor).$(version.Patch)' 
 
 steps:
+- task: VersionAssemblies@2
+  inputs:
+    Path: '$(Build.SourcesDirectory)/src/'
+    VersionNumber: '$(Build.BuildNumber)'
+    InjectVersion: true
+    FilenamePattern: 'GlobalAssemblyInfo.*'
+    OutputVersion: 'OutputedVersion'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
