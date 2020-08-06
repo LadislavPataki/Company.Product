@@ -18,7 +18,7 @@ steps:
 - task: VersionAssemblies@2
   inputs:
     Path: '$(Build.SourcesDirectory)/src/'
-    VersionNumber: '$(Build.BuildNumber)'
+    VersionNumber: '$(versionNumber)'
     InjectVersion: true
     FilenamePattern: 'GlobalAssemblyInfo.*'
     OutputVersion: 'OutputedVersion'
