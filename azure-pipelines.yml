@@ -12,7 +12,7 @@ variables:
   version.Major: '1'
   version.Minor: '0'
   version.Patch: '0' 
-  versionNumber: '$(version.Major).$(version.Minor).$(version.Patch)' 
+  versionNumber: '$(version.Major).$(version.Minor).$(version.Patch).0' 
 
 steps:
 - task: VersionAssemblies@2
