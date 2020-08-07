@@ -8,7 +8,7 @@
 
   <Identity
     Name="e3f5fdc0-35ac-4fa5-bbc7-ad95e560a829"
-    Publisher="CN=Company"
+    Publisher="CN=Product, O=Company, C=US"
     Version="1.0.0.0" />
 
   <Properties>
