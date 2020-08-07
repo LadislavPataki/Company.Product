@@ -6,7 +6,7 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'x86'
+  buildPlatform: 'x86|x64'
   buildConfiguration: 'Release'
   appxPackageDir: 'AppPackages'
   version.MajorMinor: '1.0'  
@@ -22,6 +22,13 @@ steps:
     FilenamePattern: 'GlobalAssemblyInfo.*'
     OutputVersion: 'OutputedVersion'
 
+- task: VersionAPPX@2
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    VersionNumber: '$(versionNumber)'
+    InjectVersion: true
+    OutputVersion: 'OutputedVersion'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
@@ -35,8 +42,13 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload /p:AppxPackageSigningEnabled=false /restore'
-    platform: '$(buildPlatform)'
+    msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" 
+                  /p:AppxPackageDir="$(appxPackageDir)" 
+                  /p:AppxBundle=Always 
+                  /p:UapAppxPackageBuildMode=SideloadOnly 
+                  /p:AppxPackageSigningEnabled=false 
+                  /restore'
+    platform: 'x86'
     configuration: '$(buildConfiguration)'
 
 - task: SonarCloudAnalyze@1
