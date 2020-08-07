@@ -51,13 +51,16 @@ steps:
     platform: 'x86'
     configuration: '$(buildConfiguration)'
 
-- task: SonarCloudAnalyze@1
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --logger:"trx;LogFileName=$(Common.TestResultsDirectory)" --collect:"Code Coverage" /p:CoverletOutputFormat=opencover'
+    arguments: '--configuration $(buildConfiguration) 
+                --logger:"trx;LogFileName=$(Common.TestResultsDirectory)" 
+                --collect:"Code Coverage" 
+                /p:CoverletOutputFormat=opencover'
+
+- task: SonarCloudAnalyze@1
 
 - task: SonarCloudPublish@1
   inputs:
