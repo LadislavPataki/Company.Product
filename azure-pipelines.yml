@@ -42,6 +42,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
+    vsVersion: '16.0'
     msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" 
                   /p:AppxPackageDir="$(appxPackageDir)" 
                   /p:AppxBundle=Always 
