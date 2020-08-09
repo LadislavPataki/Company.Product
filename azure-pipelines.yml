@@ -60,10 +60,7 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration) 
-                --logger:"trx;LogFileName=$(Common.TestResultsDirectory)" 
-                --collect:"Code Coverage" 
-                /p:CoverletOutputFormat=opencover'
+    arguments: '--collect:"Code Coverage"'
 
 - task: SonarCloudAnalyze@1
   displayName: Running SonarCloudAnalyze
